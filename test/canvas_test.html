@@ -1,0 +1,180 @@
+<canvas id="myCanvas" width="1000" height="1000"></canvas>
+s
+<!--mat4 사용을 위한 import-->
+<!-- <script src="https://cdn.jsdelivr.net/npm/gl-matrix@2.8.1/dist/gl-matrix-min.js"></script> -->
+<script src="gl_matrix.js"></script>
+<script>
+    "usestrict";
+    // JavaScript code for drawing on the canvas goes here
+    let canvas = document.getElementById("myCanvas");
+    // let ctx = canvas.getContext("2d");
+
+    // ctx.beginPath();
+    // ctx.moveTo(250, 50);
+    // ctx.lineTo(450, 450);
+    // ctx.lineTo(50, 450);
+    // ctx.closePath();
+
+    // ctx.fillStyle = "red";
+    // ctx.fill();
+
+    // Create a WebGL context
+    initWebGL(canvas);
+    function initWebGL(canvas) {
+        const gl = canvas.getContext('webgl') || canvas.getContext("experimental-webgl");
+        console.log(`gl:${gl}`);
+        if (!gl) {
+        console.error('WebGL not supported in this browser');
+        return;
+        }
+
+        const createShader = (gl, type, source) => {
+        const shader = gl.createShader(type);
+        if (!shader) {
+            console.error('Unable to create shader');
+            return null;
+        }
+        gl.shaderSource(shader, source);
+        gl.compileShader(shader);
+        if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+            console.error('Shader compile error: ', gl.getShaderInfoLog(shader));
+            gl.deleteShader(shader);
+            return null;
+        }
+        return shader;
+        };
+
+        const vertexShaderSource = `
+            attribute vec4 aPosition;
+            uniform mat4 uModelViewMatrix;
+            uniform mat4 uProjectionMatrix;
+            attribute vec4 aColor; // color attribute
+            varying vec4 vColor;   // for fragment shader
+            void main() {
+                gl_Position = uProjectionMatrix * uModelViewMatrix * aPosition;
+                vColor = aColor; // pass aColor(vert) to vColor(frag)
+            }
+        `;
+        const vertexShader = createShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+        if (!vertexShader) return;
+
+        const fragmentShaderSource = `
+        precision mediump float;
+        varying vec4 vColor;
+        void main() {
+            gl_FragColor = vColor;
+        }
+        `;
+        const fragmentShader = createShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+        if (!fragmentShader) return;
+
+        const shaderProgram = gl.createProgram();
+        if (!shaderProgram) {
+        console.error('Unable to create shader program');
+        return;
+        }
+        gl.attachShader(shaderProgram, vertexShader);
+        gl.attachShader(shaderProgram, fragmentShader);
+        gl.linkProgram(shaderProgram);
+        if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+        console.error('Program link error: ', gl.getProgramInfoLog(shaderProgram));
+        return;
+        }
+
+        const vertices = new Float32Array([
+        // front
+        -0.5, -0.5,  0.5,   1.0, 0.0, 0.0,
+        0.5, -0.5,  0.5,    0.0, 1.0, 0.0,
+        0.5,  0.5,  0.5,    1.0, 0.0, 1.0,
+        -0.5,  0.5,  0.5,   0.0, 1.0, 1.0,
+        // rear
+        -0.5, -0.5, -0.5,   1.0, 1.0, 0.0,
+        -0.5,  0.5, -0.5,   0.0, 1.0, 1.0,
+        0.5,  0.5, -0.5,    1.0, 0.0, 1.0,
+        0.5, -0.5, -0.5,    1.0, 1.0, 0.0,
+        ]);
+        const indices = new Float32Array([
+        0, 1, 2,     0, 2, 3,    // front
+        4, 5, 6,     4, 6, 7,    // rear
+        5, 3, 2,     5, 2, 6,    // up
+        4, 7, 1,     4, 1, 0,    // down
+        7, 6, 2,     7, 2, 1,    // right
+        4, 0, 3,     4, 3, 5     // left
+        ]);
+
+        // vertex buffer create & binding
+        const vertexBuffer = gl.createBuffer();
+        if (!vertexBuffer) {
+        console.error('Unable to create vertex buffer');
+        return;
+        }
+        gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
+
+        const indexBuffer = gl.createBuffer();
+        if (!indexBuffer) {
+        console.error('Unable to create index buffer');
+        return;
+        }
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer);
+        gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, new Uint16Array(indices), gl.STATIC_DRAW);
+
+        gl.useProgram(shaderProgram);
+
+        //position attribute
+        const aPosition = gl.getAttribLocation(shaderProgram, 'aPosition');
+        gl.enableVertexAttribArray(aPosition);
+        gl.vertexAttribPointer(aPosition, 3, gl.FLOAT, false, 6 * Float32Array.BYTES_PER_ELEMENT, 0);
+
+        // vertex color attribute
+        const aColor = gl.getAttribLocation(shaderProgram, 'aColor');
+        gl.enableVertexAttribArray(aColor);
+        gl.vertexAttribPointer(aColor, 3, gl.FLOAT, false, 6 * Float32Array.BYTES_PER_ELEMENT, 3 * Float32Array.BYTES_PER_ELEMENT);
+
+        // 투영 및 모델 뷰 행렬 설정
+        const uModelViewMatrix = gl.getUniformLocation(shaderProgram, 'uModelViewMatrix');
+        const uProjectionMatrix = gl.getUniformLocation(shaderProgram, 'uProjectionMatrix');
+        
+        const modelViewMatrix = mat4.create();
+        const projectionMatrix = mat4.create();
+
+        // mat4.perspective(projectionMatrix, 45 * Math.PI / 180, gl.canvas.width / gl.canvas.height, 0.1, 100.0);
+        mat4.perspective(projectionMatrix, 45 * Math.PI / 180, canvas.clientWidth / canvas.clientHeight, 0.1, 100.0);
+        mat4.translate(modelViewMatrix, modelViewMatrix, [0.0, 1.0, -6.0]);
+        mat4.rotate(modelViewMatrix, modelViewMatrix, 45 * Math.PI / 180, [1, 0, 0]); // rotate with x
+        mat4.rotate(modelViewMatrix, modelViewMatrix, 45 * Math.PI / 180, [0, 1, 0]); // rotate with y
+        gl.uniformMatrix4fv(uModelViewMatrix, false, modelViewMatrix);
+        gl.uniformMatrix4fv(uProjectionMatrix, false, projectionMatrix);
+
+        // 렌더링
+        gl.clearColor(0, 0, 0, 0);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.enable(gl.DEPTH_TEST);
+
+        gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+
+
+        //rotating
+        let rotationAngle = 0;
+
+        const drawScene = () => {
+        gl.useProgram(shaderProgram);
+
+        rotationAngle = 360 * Math.PI / 180 / 120;
+        // modelView Matrix rotate
+        mat4.rotate(modelViewMatrix, modelViewMatrix, rotationAngle, [0, 1, 0]);
+        // apply to glsl
+        gl.uniformMatrix4fv(uModelViewMatrix, false, modelViewMatrix);
+
+        // draw
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.drawElements(gl.TRIANGLES, indices.length, gl.UNSIGNED_SHORT, 0);
+
+        //request next frame
+        requestAnimationFrame(drawScene);
+        };
+
+        drawScene();
+    }
+
+</script>

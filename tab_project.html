@@ -1,0 +1,60 @@
+<div class="container">
+    <link rel="stylesheet" href="assets/css/my_css.css">
+    <!-- Content -->
+    <article class="box post">
+        <header>
+            <h2>Projects</h2>
+        </header>
+
+        <div class="project-card">
+            <h3>Deckode</h3>
+            <p class="project-subtitle">AI-Friendly Slide Authoring Tool</p>
+            <p>Local-first, AI-agent-driven slide platform. Visual editor backed by a JSON scene graph, where every drag-and-drop action maps to structured code.</p>
+            <ul>
+                <li>React 19 + TypeScript, Vite, Tailwind CSS v4, Zustand</li>
+                <li>Monaco Editor for JSON editing, KaTeX for math, TikZ support (server-side & WASM)</li>
+                <li>File System Access API for local project management without a backend</li>
+            </ul>
+            <p>
+                <a href="https://hyoungseo.com/deckode/" target="_blank">Live Demo</a> |
+                <a href="https://github.com/son-engr-kr/deckode" target="_blank">GitHub</a>
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>BCI Neural Visualization System</h3>
+            <p class="project-subtitle">Precision Neuroscience BCI Hackathon - 1st Place ($1,000)</p>
+            <p>Real-time neural activity visualization and BCI array placement guidance system. Processes live data from a 1024-channel micro-ECoG array (32x32 grid) to help neurosurgeons optimize BCI array placement during surgery.</p>
+            <ul>
+                <li>CNN-based denoising (ResNet U-Net with CBAM attention)</li>
+                <li>Kalman filter and EMA-based position tracking</li>
+                <li>Real-time heatmap smoothing with configurable web UI</li>
+                <li>500 Hz sampling, ~20-50ms end-to-end latency</li>
+            </ul>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/XMMdG1X3W9g?si=Ru_BJ4blpv0e8jyF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p>
+                <a href="https://github.com/son-engr-kr/H2W-brainstorm-track2" target="_blank">GitHub</a>
+            </p>
+        </div>
+
+        <div class="project-card">
+            <h3>Booky</h3>
+            <p class="project-subtitle">YHack 2026</p>
+            <p>Social reading platform that transforms solitary reading into a connected experience. Readers highlight passages, discuss with friends, make story-branching choices (Detroit: Become Human style), and explore an AI-generated solar system visualizing reading compatibility.</p>
+            <ul>
+                <li>Next.js 16, React 19, Three.js for 3D planet visualization</li>
+                <li>FastAPI backend with Firebase Firestore and ChromaDB</li>
+                <li>Google K2 Think V2 for AI content, Gemini 2.0 Flash for voice Q&A, Vertex AI Imagen for illustrations</li>
+            </ul>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/vb6r4Af8pb0?si=xG71vKUKTlUFMnyB" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+            <p>
+                <a href="https://github.com/son-engr-kr/booky-yhack" target="_blank">GitHub</a>
+            </p>
+        </div>
+
+    </article>
+</div>

@@ -1,16 +1,20 @@
 .cv-download-btn {
     display: inline-block;
-    margin-top: 10px;
-    padding: 8px 20px;
-    background-color: #333;
-    color: #fff !important;
+    margin-top: 15px;
+    padding: 10px 28px;
+    background-color: transparent;
+    color: #4FC3F7 !important;
     text-decoration: none;
-    border-radius: 4px;
-    font-size: 0.9em;
-    transition: background-color 0.2s;
+    border: 2px solid #4FC3F7;
+    border-radius: 25px;
+    font-size: 0.85em;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
 }
 .cv-download-btn:hover {
-    background-color: #555;
+    background-color: #4FC3F7;
+    color: #fff !important;
 }
 
 .project-card {

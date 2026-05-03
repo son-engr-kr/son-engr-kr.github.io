@@ -1,45 +1,28 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/projects";
+import {
+  awards,
+  coursework,
+  education,
+  industry,
+  researchInterests,
+  type Education,
+} from "@/lib/profile";
 
-const education = [
-  {
-    school: "Northeastern University",
-    location: "Boston, MA",
-    degree: "Ph.D., Mechanical Engineering",
-    period: "2024.09 - present",
-    logo: "/images/logos/nu.png",
-    logoAlt: "Northeastern University",
-    details: ["Advised by Seungmoon Song", "GPA 3.96 / 4.0"],
-  },
-  {
-    school: "Kyungpook National University",
-    location: "South Korea",
-    degree: "B.S., Mechanical Engineering (CS minor)",
-    period: "2018.03 - 2021.02",
-    logo: "/images/logos/knu.png",
-    logoAlt: "Kyungpook National University",
-    details: ["GPA 3.84 / 4.0", "Summa Cum Laude (1st / 152)"],
-  },
-];
+function degreeLine(e: Education): string {
+  return `${e.degreeLevel}, ${e.major}${e.minor ? ` (${e.minor} minor)` : ""}`;
+}
 
-const awards: { title: string; year: string; href?: string }[] = [
-  {
-    title: "HackPrinceton Spring 2026, Knot API track, 1st Place",
-    year: "2026",
-    href: "/projects/#flanner",
-  },
-  {
-    title: "Precision Neuroscience BCI Hackathon, 1st Place",
-    year: "2026",
-    href: "/projects/#bci-visualization",
-  },
-  { title: "R-BIZ Challenge, Presidential Award", year: "2019" },
-  {
-    title: "National Scholarship for Science and Engineering, Full Tuition",
-    year: "2020",
-  },
-];
+function detailLine(e: Education): string {
+  return [
+    e.advisor && `Advised by ${e.advisor}`,
+    `GPA ${e.gpa}`,
+    e.honors,
+  ]
+    .filter(Boolean)
+    .join(" · ");
+}
 
 export default function HomePage() {
   return (
@@ -106,9 +89,9 @@ export default function HomePage() {
                     {e.period}
                   </span>
                 </div>
-                <p className="mt-1 text-sm text-[var(--color-fg)]">{e.degree}</p>
+                <p className="mt-1 text-sm text-[var(--color-fg)]">{degreeLine(e)}</p>
                 <p className="mt-1 text-sm text-[var(--color-fg-muted)]">
-                  {e.details.join(" · ")}
+                  {detailLine(e)}
                 </p>
               </div>
             </li>
@@ -119,18 +102,13 @@ export default function HomePage() {
       {/* Research */}
       <Section title="Research Interests">
         <p className="text-[var(--color-fg)]">
-          Physics Simulation, GPU-Accelerated Simulation, Reinforcement Learning,
-          Deep Learning, Differentiable Simulation
+          {researchInterests.join(" · ")}
         </p>
       </Section>
 
       {/* Coursework */}
       <Section title="Coursework">
-        <p className="text-[var(--color-fg)]">
-          Reinforcement Learning and Sequential Decision Making, Deep Learning,
-          Machine Learning, Theory of Optimization, Human Movement Simulation,
-          Wearable Robotics
-        </p>
+        <p className="text-[var(--color-fg)]">{coursework.join(", ")}</p>
       </Section>
 
       {/* Selected Projects */}
@@ -174,30 +152,29 @@ export default function HomePage() {
 
       {/* Industry */}
       <Section title="Industry Experience">
-        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-          <h3 className="text-base font-semibold tracking-tight">
-            Gachisoft Inc.
-            <span className="ml-2 font-normal text-[var(--color-fg-muted)]">
-              Software Research Engineer
-            </span>
-          </h3>
-          <span className="font-mono text-xs text-[var(--color-fg-muted)]">
-            2021 - 2024
-          </span>
-        </div>
-        <ul className="mt-3 space-y-1.5 text-sm text-[var(--color-fg)]">
-          <li className="flex gap-2">
-            <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-[var(--color-fg-muted)]" />
-            <span>Logistics Digital Twin System deployed at two Korea Post sites</span>
-          </li>
-          <li className="flex gap-2">
-            <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-[var(--color-fg-muted)]" />
-            <span>
-              3D vision system for Coupang; PLC integration for real-time control
-              (C++, OpenCV)
-            </span>
-          </li>
-        </ul>
+        {industry.map((job) => (
+          <div key={job.company} className="mb-6 last:mb-0">
+            <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+              <h3 className="text-base font-semibold tracking-tight">
+                {job.company}
+                <span className="ml-2 font-normal text-[var(--color-fg-muted)]">
+                  {job.role}
+                </span>
+              </h3>
+              <span className="font-mono text-xs text-[var(--color-fg-muted)]">
+                {job.period}
+              </span>
+            </div>
+            <ul className="mt-3 space-y-1.5 text-sm text-[var(--color-fg)]">
+              {job.bullets.map((b) => (
+                <li key={b} className="flex gap-2">
+                  <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-[var(--color-fg-muted)]" />
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
       </Section>
 
       {/* Awards */}

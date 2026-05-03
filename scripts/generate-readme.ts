@@ -118,10 +118,13 @@ function main() {
   }
 
   if (missing.length > 0) {
-    console.error(
-      `Markers not found in ${path}: ${missing.join(", ")}\n` +
-        `Add <!-- AUTO:KEY:START --> and <!-- AUTO:KEY:END --> pairs.`
-    );
+    const msg = `Markers not found in ${path}: ${missing.join(
+      ", "
+    )}. Add <!-- AUTO:KEY:START --> and <!-- AUTO:KEY:END --> pairs from scripts/profile-readme.template.md.`;
+    console.error(msg);
+    if (process.env.GITHUB_ACTIONS) {
+      console.log(`::warning::${msg}`);
+    }
   }
 
   if (content === original) {

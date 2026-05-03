@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { projects } from "@/lib/projects";
 
 const education = [
   {
@@ -8,10 +10,7 @@ const education = [
     period: "2024.09 - present",
     logo: "/images/logos/nu.png",
     logoAlt: "Northeastern University",
-    details: [
-      "Advised by Seungmoon Song",
-      "GPA 3.96 / 4.0",
-    ],
+    details: ["Advised by Seungmoon Song", "GPA 3.96 / 4.0"],
   },
   {
     school: "Kyungpook National University",
@@ -20,18 +19,22 @@ const education = [
     period: "2018.03 - 2021.02",
     logo: "/images/logos/knu.png",
     logoAlt: "Kyungpook National University",
-    details: [
-      "GPA 3.84 / 4.0",
-      "Summa Cum Laude (1st / 152)",
-    ],
+    details: ["GPA 3.84 / 4.0", "Summa Cum Laude (1st / 152)"],
   },
 ];
 
-const awards = [
-  ["Precision Neuroscience BCI Hackathon, 1st Place", "2026"],
-  ["R-BIZ Challenge, Presidential Award", "2019"],
-  ["National Scholarship for Science and Engineering, Full Tuition", "2020"],
-] as const;
+const awards: { title: string; year: string; href?: string }[] = [
+  {
+    title: "Precision Neuroscience BCI Hackathon, 1st Place",
+    year: "2026",
+    href: "/projects/#bci-visualization",
+  },
+  { title: "R-BIZ Challenge, Presidential Award", year: "2019" },
+  {
+    title: "National Scholarship for Science and Engineering, Full Tuition",
+    year: "2020",
+  },
+];
 
 export default function HomePage() {
   return (
@@ -125,35 +128,107 @@ export default function HomePage() {
         </p>
       </Section>
 
+      {/* Selected Projects */}
+      <Section
+        title="Selected Projects"
+        action={
+          <Link
+            href="/projects"
+            className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-fg-muted)] transition-colors hover:text-[var(--color-fg)]"
+          >
+            View all ↗
+          </Link>
+        }
+      >
+        <ul className="divide-y divide-[var(--color-border)]">
+          {projects.map((p) => (
+            <li key={p.slug}>
+              <Link
+                href={`/projects/#${p.slug}`}
+                className="group block py-4 first:pt-0"
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+                  <h3 className="text-base font-semibold tracking-tight text-[var(--color-fg)] transition-colors group-hover:text-[var(--color-accent)]">
+                    {p.title}
+                    <span className="ml-2 inline-block translate-x-0 text-xs text-[var(--color-fg-muted)] transition-transform group-hover:translate-x-1">
+                      ↗
+                    </span>
+                  </h3>
+                  <span className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-fg-muted)]">
+                    {p.category} · {p.year}
+                  </span>
+                </div>
+                <p className="mt-1 text-sm text-[var(--color-fg-muted)]">
+                  {p.tagline}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </Section>
+
       {/* Industry */}
       <Section title="Industry Experience">
-        <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-5">
-          <h3 className="text-base font-semibold">
-            Gachisoft Inc., Software Research Engineer
+        <div className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+          <h3 className="text-base font-semibold tracking-tight">
+            Gachisoft Inc.
+            <span className="ml-2 font-normal text-[var(--color-fg-muted)]">
+              Software Research Engineer
+            </span>
           </h3>
-          <p className="mt-1 text-xs text-[var(--color-fg-muted)]">2021 - 2024</p>
-          <ul className="mt-3 list-inside list-disc space-y-1.5 text-sm text-[var(--color-fg)]">
-            <li>Logistics Digital Twin System deployed at two Korea Post sites</li>
-            <li>
+          <span className="font-mono text-xs text-[var(--color-fg-muted)]">
+            2021 - 2024
+          </span>
+        </div>
+        <ul className="mt-3 space-y-1.5 text-sm text-[var(--color-fg)]">
+          <li className="flex gap-2">
+            <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-[var(--color-fg-muted)]" />
+            <span>Logistics Digital Twin System deployed at two Korea Post sites</span>
+          </li>
+          <li className="flex gap-2">
+            <span className="mt-2 inline-block h-1 w-1 shrink-0 rounded-full bg-[var(--color-fg-muted)]" />
+            <span>
               3D vision system for Coupang; PLC integration for real-time control
               (C++, OpenCV)
-            </li>
-          </ul>
-        </div>
+            </span>
+          </li>
+        </ul>
       </Section>
 
       {/* Awards */}
       <Section title="Honors & Awards">
-        <ul className="divide-y divide-[var(--color-border)] rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)]">
-          {awards.map(([title, year]) => (
-            <li
-              key={title}
-              className="flex items-center justify-between px-5 py-3 text-sm"
-            >
-              <span>{title}</span>
-              <span className="text-[var(--color-fg-muted)]">{year}</span>
-            </li>
-          ))}
+        <ul className="divide-y divide-[var(--color-border)]">
+          {awards.map((a) => {
+            const row = (
+              <div className="flex items-center justify-between gap-3 py-3 text-sm">
+                <span>
+                  {a.title}
+                  {a.href && (
+                    <span className="ml-1.5 text-xs text-[var(--color-fg-muted)]">
+                      ↗
+                    </span>
+                  )}
+                </span>
+                <span className="font-mono text-xs text-[var(--color-fg-muted)]">
+                  {a.year}
+                </span>
+              </div>
+            );
+            return (
+              <li key={a.title} className="first:[&>*]:pt-0 last:[&>*]:pb-0">
+                {a.href ? (
+                  <Link
+                    href={a.href}
+                    className="block text-[var(--color-fg)] transition-colors hover:text-[var(--color-accent)]"
+                  >
+                    {row}
+                  </Link>
+                ) : (
+                  row
+                )}
+              </li>
+            );
+          })}
         </ul>
       </Section>
 
@@ -172,12 +247,23 @@ export default function HomePage() {
   );
 }
 
-function Section({ title, children }: { title: string; children: React.ReactNode }) {
+function Section({
+  title,
+  action,
+  children,
+}: {
+  title: string;
+  action?: React.ReactNode;
+  children: React.ReactNode;
+}) {
   return (
     <section className="mb-12">
-      <h2 className="mb-4 text-xs font-semibold uppercase tracking-wider text-[var(--color-fg-muted)]">
-        {title}
-      </h2>
+      <div className="mb-4 flex items-baseline justify-between">
+        <h2 className="text-xs font-semibold uppercase tracking-wider text-[var(--color-fg-muted)]">
+          {title}
+        </h2>
+        {action}
+      </div>
       {children}
     </section>
   );

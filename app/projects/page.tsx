@@ -7,16 +7,21 @@ export const metadata = {
 
 export default function ProjectsPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-12">
-      <header className="mb-10">
-        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+    <div className="mx-auto max-w-3xl px-6 py-16">
+      <header className="mb-14">
+        <p className="font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-fg-muted)]">
+          {projects.length} projects · {new Date().getFullYear()}
+        </p>
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight sm:text-5xl">
           Projects
         </h1>
-        <p className="mt-2 text-[var(--color-fg-muted)]">
-          Selected work · research, hackathons, and tools.
+        <p className="mt-3 max-w-xl text-[var(--color-fg-muted)]">
+          Selected work across research tooling, hackathon prototypes, and
+          real-time systems.
         </p>
       </header>
-      <div className="grid gap-6">
+
+      <div className="space-y-12">
         {projects.map((p) => (
           <ProjectCard key={p.slug} project={p} />
         ))}

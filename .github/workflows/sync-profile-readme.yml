@@ -17,37 +17,56 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
+      - name: Verify PAT secret
+        id: check
+        env:
+          TOKEN: ${{ secrets.PROFILE_README_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::warning::PROFILE_README_TOKEN secret is not set. Skipping cross-repo README sync. See scripts/profile-readme.template.md for setup."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Checkout portfolio
+        if: steps.check.outputs.ready == 'true'
         uses: actions/checkout@v4
         with:
           path: portfolio
 
       - name: Checkout profile repo
+        if: steps.check.outputs.ready == 'true'
         uses: actions/checkout@v4
         with:
           repository: son-engr-kr/son-engr-kr
           path: profile
           token: ${{ secrets.PROFILE_README_TOKEN }}
 
-      - uses: pnpm/action-setup@v4
+      - if: steps.check.outputs.ready == 'true'
+        uses: pnpm/action-setup@v4
         with:
           version: 10
 
-      - uses: actions/setup-node@v4
+      - if: steps.check.outputs.ready == 'true'
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: pnpm
           cache-dependency-path: portfolio/pnpm-lock.yaml
 
       - name: Install dependencies
+        if: steps.check.outputs.ready == 'true'
         working-directory: portfolio
         run: pnpm install --frozen-lockfile
 
       - name: Regenerate README
+        if: steps.check.outputs.ready == 'true'
         working-directory: portfolio
         run: pnpm tsx scripts/generate-readme.ts ../profile/README.md
 
       - name: Commit & push if changed
+        if: steps.check.outputs.ready == 'true'
         working-directory: profile
         run: |
           if git diff --quiet README.md; then

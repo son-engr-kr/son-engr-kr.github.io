@@ -77,6 +77,10 @@
 
 ![Profile Views](https://komarev.com/ghpvc/?username=son-engr-kr&label=Profile%20views&color=4FC3F7&style=flat)
 
----
+<!--
+  The Education, Research, Highlights, Featured Projects, and Industry
+  Experience sections above are auto-generated from
+  son-engr-kr/son-engr-kr.github.io on every push to portfolio main.
+  Source data: lib/profile.ts, lib/projects.ts.
+-->
 
-<sub>The Education, Research, Highlights, Featured Projects, and Industry Experience sections above are auto-generated from <a href="https://github.com/son-engr-kr/son-engr-kr.github.io">son-engr-kr/son-engr-kr.github.io</a> on every push to portfolio main. Source data: <code>lib/profile.ts</code>, <code>lib/projects.ts</code>.</sub>

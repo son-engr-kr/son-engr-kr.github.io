@@ -25,6 +25,11 @@ const education = [
 
 const awards: { title: string; year: string; href?: string }[] = [
   {
+    title: "HackPrinceton Spring 2026, Knot API track, 1st Place",
+    year: "2026",
+    href: "/projects/#flanner",
+  },
+  {
     title: "Precision Neuroscience BCI Hackathon, 1st Place",
     year: "2026",
     href: "/projects/#bci-visualization",

@@ -74,7 +74,6 @@ export const projects: Project[] = [
     links: [
       { label: "Live", href: "https://flanner.health" },
       { label: "GitHub", href: "https://github.com/son-engr-kr/hackprinceton-beta" },
-      { label: "Demo (2 min)", href: "https://youtu.be/gfLijC1apBo" },
     ],
     videoEmbedUrl: "https://www.youtube.com/embed/gfLijC1apBo",
   },
@@ -110,7 +109,6 @@ export const projects: Project[] = [
     links: [
       { label: "Live", href: "https://motzip.vercel.app" },
       { label: "GitHub", href: "https://github.com/son-engr-kr/next-gen-hacks-beta" },
-      { label: "Demo", href: "https://youtu.be/a8UhKh7S4FU" },
     ],
     videoEmbedUrl: "https://www.youtube.com/embed/a8UhKh7S4FU",
   },
@@ -146,6 +144,40 @@ export const projects: Project[] = [
       },
     ],
     videoEmbedUrl: "https://www.youtube.com/embed/XMMdG1X3W9g",
+  },
+  {
+    slug: "zerve-odsc-datathon",
+    title: "Zerve × ODSC AI Datathon",
+    subtitle: "ODSC AI Datathon · 2026",
+    category: "Datathon",
+    year: "2026",
+    tagline:
+      "Production-style MLOps pipeline for subscription upgrade prediction — 32 blocks, 5-model ensemble, weekly drift detection, all built inside the Zerve canvas.",
+    description:
+      "End-to-end MLOps pipeline as a 32-block, 42-edge parallel-converge DAG inside the Zerve canvas: schema/leakage validation → EDA + 15-stage funnel → a 5-candidate AutoML pool → drift detection → champion picked for serving → weekly retraining loop. A Next.js frontend renders the DAG and calls a deployed FastAPI for live inference, reading canvas variables in real time.",
+    bullets: [
+      "5-candidate model pool: calibrated XGBoost + RF + HGB soft-vote ensemble, PyTorch tab-MLP, sklearn GBM — isotonic calibration throughout",
+      "PR-AUC 0.2645, ROC-AUC 0.812 on 3.5M rows / 17,541 users (1.84% upgrade rate, ~53:1 imbalance); top-5% precision ~9× lift",
+      "Tree SHAP + segment-level diagnostics map top features to marketing actions",
+      "Weekly drift watch (PSI 0.10/0.25 + KS) with append-only event store, label-stable retraining gates, would_promote_new_model flag",
+      "Next.js 14 + ReactFlow frontend draws the canvas DAG and queries the deployed FastAPI for live PNGs and inference",
+    ],
+    tags: [
+      "Python",
+      "XGBoost",
+      "PyTorch",
+      "scikit-learn",
+      "SHAP",
+      "FastAPI",
+      "Next.js 14",
+      "ReactFlow",
+      "Zerve",
+    ],
+    links: [
+      { label: "Live", href: "https://anmemol-beta.github.io/zerve-odsc-ai-datathon/" },
+      { label: "GitHub", href: "https://github.com/anmemol-beta/zerve-odsc-ai-datathon" },
+    ],
+    videoEmbedUrl: "https://www.youtube.com/embed/TSgGcswV9NA",
   },
   {
     slug: "booky",

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/projects";
+import { TypingQuote } from "@/components/TypingQuote";
 import {
   awards,
   coursework,
@@ -46,10 +47,7 @@ export default function HomePage() {
           <p className="mt-2 text-[var(--color-fg-muted)]">
             Industry-experienced PhD student · Northeastern University
           </p>
-          <p className="mt-4 max-w-2xl text-[var(--color-fg)]">
-            &ldquo;Dreams feel real while we&rsquo;re in them.&rdquo; · Inception · So
-            do good simulations.
-          </p>
+          <TypingQuote />
           <div className="mt-6">
             <a
               href="/assets/resume/cv_hyoungseo_son.pdf"

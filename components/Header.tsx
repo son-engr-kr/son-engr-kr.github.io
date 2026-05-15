@@ -3,9 +3,11 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const navItems = [
+const navItems: { href: string; label: string; prefetch?: boolean }[] = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
+  // prefetch disabled: keeps the heavy 3D bundle off every other page.
+  { href: "/playground", label: "Playground", prefetch: false },
 ];
 
 export function Header() {
@@ -31,6 +33,7 @@ export function Header() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
+                    prefetch={item.prefetch}
                     className={`rounded-md px-3 py-1.5 transition-colors ${
                       active
                         ? "bg-[var(--color-surface-2)] text-[var(--color-fg)]"

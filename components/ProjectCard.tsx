@@ -58,6 +58,24 @@ export function ProjectCard({ project }: { project: Project }) {
         </div>
       )}
 
+      {project.reactionEmbed && (
+        <figure className="mt-4 max-w-sm">
+          <div className="relative aspect-video overflow-hidden rounded-lg border border-[var(--color-border)] bg-black">
+            <iframe
+              className="absolute inset-0 h-full w-full"
+              src={project.reactionEmbed.url}
+              title={project.reactionEmbed.label}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+            />
+          </div>
+          <figcaption className="mt-1.5 font-mono text-[11px] uppercase tracking-[0.12em] text-[var(--color-fg-muted)]">
+            {project.reactionEmbed.label}
+          </figcaption>
+        </figure>
+      )}
+
       <div className="mt-6 flex flex-wrap gap-2 text-sm">
         {project.links.map((l) => (
           <a

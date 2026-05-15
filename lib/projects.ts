@@ -10,6 +10,7 @@ export type Project = {
   tags: string[];
   links: { label: string; href: string; primary?: boolean }[];
   videoEmbedUrl?: string;
+  reactionEmbed?: { url: string; label: string };
 };
 
 export const projects: Project[] = [
@@ -46,7 +47,7 @@ export const projects: Project[] = [
   {
     slug: "flanner",
     title: "Flanner",
-    subtitle: "HackPrinceton Spring 2026 · Knot API track, 1st Place",
+    subtitle: "HackPrinceton Spring 2026 · Knot API track, 1st Place ($500)",
     category: "Hackathon",
     year: "2026",
     tagline:
@@ -144,6 +145,41 @@ export const projects: Project[] = [
       },
     ],
     videoEmbedUrl: "https://www.youtube.com/embed/XMMdG1X3W9g",
+  },
+  {
+    slug: "trippo",
+    title: "Trippo",
+    subtitle: "Remy Hackathon 2026 · 2nd Place ($1,000)",
+    category: "Hackathon",
+    year: "2026",
+    tagline:
+      "Group travel chat that becomes a film when the trip ends — chat is the planner, photos cluster by EXIF + GPS, one-tap recap reel.",
+    description:
+      "Replaces the group chat for the duration of a trip. A single trip room captures plans, photos, and tickets live; chat messages drive plan updates in real time, EXIF + GPS clusters photos by place and minute, and one tap turns the trip into a 1, 3, or 5-minute vertical recap reel for TikTok / Reels / Shorts.",
+    bullets: [
+      "TypeScript backend on @mindstudio-ai/agent for DB + AI primitives; React + Vite mobile-first frontend",
+      "Chat is the planner: Claude Sonnet extracts plan updates from messages in real time, Haiku polishes captions",
+      "Photo clustering by EXIF + GPS: same place and minute groups into split-screen, distinct stops become animated map pins",
+      "One tap renders a vertical 9:16 recap reel via Creatomate for TikTok / Reels / Shorts",
+    ],
+    tags: [
+      "TypeScript",
+      "React",
+      "Vite",
+      "MindStudio Agent",
+      "Claude Sonnet",
+      "Claude Haiku",
+      "Creatomate",
+      "EXIF",
+    ],
+    links: [
+      { label: "Live", href: "https://trippo.msagent.ai/" },
+    ],
+    videoEmbedUrl: "https://www.youtube.com/embed/MRVOOIVdHoE",
+    reactionEmbed: {
+      url: "https://www.youtube.com/embed/wJW9pqgre_o",
+      label: "MindStudio PM reacts to the demo",
+    },
   },
   {
     slug: "zerve-odsc-datathon",

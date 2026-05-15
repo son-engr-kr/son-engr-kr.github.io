@@ -90,16 +90,22 @@ export const industry: Industry[] = [
 
 export const awards: Award[] = [
   {
-    title: "HackPrinceton Spring 2026, Knot API track, 1st Place",
+    title: "HackPrinceton Spring 2026, Knot API track, 1st Place ($500)",
     year: "2026",
     href: "/projects/#flanner",
-    readme: "**HackPrinceton Spring 2026** — Knot API track, 1st Place",
+    readme: "**HackPrinceton Spring 2026** — Knot API track, 1st Place ($500)",
   },
   {
-    title: "Precision Neuroscience BCI Hackathon, 1st Place",
+    title: "Precision Neuroscience BCI Hackathon, 1st Place ($1,000)",
     year: "2026",
     href: "/projects/#bci-visualization",
     readme: "**Precision Neuroscience BCI Hackathon** — 1st Place ($1,000)",
+  },
+  {
+    title: "Remy Hackathon 2026, 2nd Place ($1,000)",
+    year: "2026",
+    href: "/projects/#trippo",
+    readme: "**Remy Hackathon 2026** — 2nd Place ($1,000)",
   },
   {
     title: "R-BIZ Challenge, Presidential Award",

@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { projects } from "@/lib/projects";
 import { TypingQuote } from "@/components/TypingQuote";
+import { HeroName } from "@/components/hero/HeroName";
 import {
   awards,
   coursework,
@@ -41,9 +42,7 @@ export default function HomePage() {
           />
         </div>
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Hyoungseo Son
-          </h1>
+          <HeroName />
           <p className="mt-2 text-[var(--color-fg-muted)]">
             Industry-experienced PhD student · Northeastern University
           </p>

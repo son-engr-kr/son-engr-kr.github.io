@@ -14,9 +14,6 @@ export function HeroName() {
   const handleReady = useCallback(() => setReady(true), []);
 
   useEffect(() => {
-    // Respect reduced-motion: keep the plain heading, never fetch the 3D chunk.
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
     let cancelled = false;
     // Let the static heading paint first (two frames), then load the 3D chunk
     // straight away — it stays a separate chunk, but the visible-text window

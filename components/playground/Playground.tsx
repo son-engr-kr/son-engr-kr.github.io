@@ -26,10 +26,10 @@ export function Playground() {
           Physics Sandbox
         </h1>
         <p className="mt-3 max-w-xl text-[var(--color-fg-muted)]">
-          A real-time rigid-body simulation running entirely in your browser —
-          rendered with react-three-fiber and stepped by the Rapier physics
-          engine. Drag to orbit; sweep your cursor through the shapes to knock
-          them around.
+          The letters of my name drop in and settle into place — a real-time
+          rigid-body simulation rendered with react-three-fiber and stepped by
+          the Rapier physics engine. Drag to orbit; sweep your cursor through
+          the letters to knock them around.
         </p>
       </header>
 

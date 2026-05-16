@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 const navItems: { href: string; label: string; prefetch?: boolean }[] = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
-  // prefetch disabled: keeps the heavy 3D bundle off every other page.
+  // prefetch disabled: keeps the heavy 3D bundles off every other page.
   { href: "/playground", label: "Playground", prefetch: false },
 ];
 

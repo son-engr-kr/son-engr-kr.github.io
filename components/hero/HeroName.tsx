@@ -48,6 +48,7 @@ export function HeroName() {
       </h1>
 
       {mounted && (
+        // Transparent canvas — the letters sit directly on the page.
         <div
           aria-hidden
           className={`absolute inset-0 transition-opacity duration-500 ${

@@ -102,13 +102,7 @@ function FitCamera() {
 // The letters drop into their slots with rotation locked, so they always land
 // upright and readable. A damped spring on X/Z slides any displaced letter
 // home; gravity and the floor own the vertical axis.
-function Letters({
-  dark,
-  onReady,
-}: {
-  dark: boolean;
-  onReady?: () => void;
-}) {
+function Letters({ dark, onReady }: { dark: boolean; onReady?: () => void }) {
   const letters = useLetters();
   const refs = useRef<(RapierRigidBody | null)[]>([]);
   const readyFired = useRef(false);
@@ -178,12 +172,15 @@ function Letters({
           >
             <CuboidCollider args={l.half} />
             <mesh geometry={l.geometry}>
+              {/* Dark page: the playground's glowing light-blue. Light page:
+                  a vivid deep blue that reads on white — a faint same-hue
+                  emissive keeps the shadowed faces from going dull. */}
               <meshStandardMaterial
-                color={dark ? "#5BC8F7" : "#0a63a8"}
-                emissive={dark ? "#3aa9e0" : "#000000"}
-                emissiveIntensity={dark ? 0.14 : 0}
-                roughness={dark ? 0.34 : 0.42}
-                metalness={dark ? 0.28 : 0.12}
+                color={dark ? "#5BC8F7" : "#0a6fc0"}
+                emissive={dark ? "#4FC3F7" : "#0a6fc0"}
+                emissiveIntensity={dark ? 0.12 : 0.06}
+                roughness={dark ? 0.34 : 0.36}
+                metalness={dark ? 0.3 : 0.15}
               />
             </mesh>
           </RigidBody>
@@ -315,15 +312,17 @@ export default function HeroNameScene({
           hover.current = false;
         }}
       >
-        <ambientLight intensity={env.dark ? 0.55 : 0.85} />
+        {/* Dark page mirrors the playground; light page lifts the ambient
+            and warms the fill so the name stays vivid on white. */}
+        <ambientLight intensity={env.dark ? 0.5 : 0.7} />
         <directionalLight
-          position={[5, 9, 7]}
-          intensity={env.dark ? 2.4 : 2.7}
+          position={[9, 16, 12]}
+          intensity={env.dark ? 2.6 : 2.8}
         />
         <directionalLight
-          position={[-7, 3, -4]}
-          intensity={env.dark ? 0.5 : 0.7}
-          color={env.dark ? "#4FC3F7" : "#bcdcef"}
+          position={[-9, 5, -6]}
+          intensity={0.6}
+          color={env.dark ? "#4FC3F7" : "#a9d6f0"}
         />
 
         <FitCamera />

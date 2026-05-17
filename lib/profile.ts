@@ -108,9 +108,16 @@ export const awards: Award[] = [
     readme: "**Remy Hackathon 2026** — 2nd Place ($1,000)",
   },
   {
-    title: "R-BIZ Challenge, Presidential Award",
+    title: "LikeLion US 2025 Ideathon, Winner (Top 3)",
+    year: "2025",
+    href: "/projects/#cohabitai",
+    readme: "**LikeLion US 2025 Ideathon** — Winner (Top 3)",
+  },
+  {
+    title: "R-BIZ Challenge, Presidential Award (₩4,000,000)",
     year: "2019",
-    readme: "**R-BIZ Challenge** — Presidential Award (2019)",
+    href: "https://knu.ac.kr/wbbs/wbbs/bbs/btin/viewBtin.action?bbs_cde=28&btin.bbs_cde=28&btin.doc_no=1319988&btin.appl_no=000000&btin.page=1&btin.search_type=&btin.search_text=&popupDeco=false&btin.note_div=row&menu_idx=215",
+    readme: "**[R-BIZ Challenge](https://knu.ac.kr/wbbs/wbbs/bbs/btin/viewBtin.action?bbs_cde=28&btin.bbs_cde=28&btin.doc_no=1319988&btin.appl_no=000000&btin.page=1&btin.search_type=&btin.search_text=&popupDeco=false&btin.note_div=row&menu_idx=215)** — Presidential Award, ₩4,000,000 (2019)",
   },
   {
     title: "National Scholarship for Science and Engineering, Full Tuition",

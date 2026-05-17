@@ -21,7 +21,7 @@ export function ProjectCard({ project }: { project: Project }) {
             <span aria-hidden>·</span>
             <span
               className={
-                /place/i.test(project.award)
+                /place|winner/i.test(project.award)
                   ? "text-[var(--color-accent)]"
                   : undefined
               }

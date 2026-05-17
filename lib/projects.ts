@@ -307,7 +307,7 @@ export const projects: Project[] = [
       "FastAPI + Python 3.11 backend; Vite + React + TypeScript + Tailwind CSS frontend with react-player playback",
       "Twelve Labs API for video understanding — Marengo embeddings for segment similarity, Pegasus for chapter generation",
       "Paste a YouTube URL → yt-dlp downloads it → auto-generated, clickable chapter timeline",
-      "Click a chapter to surface ranked similar segments across the whole library; ships an optional FiftyOne plugin with a FindSimilarSegments operator",
+      "Click a chapter to surface ranked similar segments across the whole library, jumping playback straight to each match",
     ],
     tags: [
       "Python",
@@ -317,7 +317,6 @@ export const projects: Project[] = [
       "Vite",
       "Tailwind CSS",
       "Twelve Labs API",
-      "FiftyOne",
       "yt-dlp",
     ],
     links: [
@@ -325,6 +324,64 @@ export const projects: Project[] = [
         label: "GitHub",
         href: "https://github.com/son-engr-kr/beta-twelvelabs-hackathon",
         primary: true,
+      },
+    ],
+  },
+  {
+    slug: "cohabitai",
+    title: "CoHabitAI",
+    subtitle: "AI Manager for Roommate Living",
+    category: "Ideathon",
+    year: "2025",
+    event: "LikeLion US 2025 Ideathon",
+    award: "Winner",
+    tagline:
+      "Whose turn was it to clean? Who still owes rent? CoHabitAI is an AI manager that coordinates the friction points of shared living — fairly.",
+    description:
+      "An Ideathon concept for shared-living harmony. CoHabitAI proposes an AI manager that defuses the everyday friction of roommate life — chore turns, unpaid rent, clashing schedules — by distributing tasks fairly, syncing everyone's calendars, tracking shared supplies with auto-reorder alerts, and sending smart reminders so nothing slips. Presented as the team's pitch for the LikeLion US 2025 Ideathon.",
+    bullets: [
+      "Concept: an AI agent that distributes chores, coordinates schedules, and mediates roommate disputes fairly",
+      "Proposed features — calendar integration, a shared-supplies tracker with auto-reorder alerts, smart reminders, and a household onboarding flow",
+      "Pitch site built with React + Vite",
+    ],
+    tags: ["React", "Vite", "JavaScript"],
+    links: [
+      { label: "Live", href: "https://hyoungseo.com/Likelion2025Ideaton-page/" },
+      {
+        label: "GitHub",
+        href: "https://github.com/son-engr-kr/Likelion2025Ideaton-page",
+      },
+    ],
+  },
+  {
+    slug: "echoboard",
+    title: "EchoBoard",
+    subtitle: "Context-Aware Ad Virtual Camera",
+    category: "Hackathon",
+    year: "2025",
+    event: "Dream AI Hackathon",
+    tagline:
+      "A virtual camera that listens to your video call and turns the background behind you into an ad that matches what you're talking about.",
+    description:
+      "An AI-powered virtual camera for video calls. EchoBoard transcribes the live conversation with speech-to-text, uses an LLM to detect the current topic, and composites a matching advertisement or branded background behind the speaker with real-time face detection — so what's on screen always echoes what's being discussed. Built as a 2025 Dream AI Hackathon project.",
+    bullets: [
+      "Python 3.11; pyvirtualcam streams the composited feed into Zoom as a virtual camera, set up through OBS Studio",
+      "Live speech-to-text plus Google's Gemini detect the conversation topic in real time",
+      "OpenCV face detection overlays a topic-matched advertisement or branded background behind the speaker",
+    ],
+    tags: [
+      "Python",
+      "OpenCV",
+      "pyvirtualcam",
+      "Gemini",
+      "Speech-to-Text",
+      "OBS Studio",
+    ],
+    links: [
+      { label: "Live", href: "https://hyoungseo.com/auto-ad-virtualcam/" },
+      {
+        label: "GitHub",
+        href: "https://github.com/son-engr-kr/auto-ad-virtualcam",
       },
     ],
   },

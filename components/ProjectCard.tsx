@@ -10,14 +10,36 @@ export function ProjectCard({ project }: { project: Project }) {
         <span>{project.category}</span>
         <span aria-hidden>·</span>
         <span>{project.year}</span>
+        {project.event && (
+          <>
+            <span aria-hidden>·</span>
+            <span>{project.event}</span>
+          </>
+        )}
+        {project.award && (
+          <>
+            <span aria-hidden>·</span>
+            <span
+              className={
+                /place/i.test(project.award)
+                  ? "text-[var(--color-accent)]"
+                  : undefined
+              }
+            >
+              {project.award}
+            </span>
+          </>
+        )}
       </div>
 
       <h3 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
         {project.title}
       </h3>
-      <p className="mt-1.5 text-sm text-[var(--color-fg-muted)]">
-        {project.subtitle}
-      </p>
+      {project.subtitle && (
+        <p className="mt-1.5 text-sm text-[var(--color-fg-muted)]">
+          {project.subtitle}
+        </p>
+      )}
 
       <p className="mt-5 max-w-3xl text-[15px] leading-relaxed text-[var(--color-fg)]">
         {project.description}

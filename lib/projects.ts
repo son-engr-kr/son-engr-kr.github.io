@@ -1,9 +1,12 @@
 export type Project = {
   slug: string;
   title: string;
-  subtitle: string;
+  subtitle?: string;
   category: string;
   year: string;
+  // Competition name and result. Omit both for non-competition projects.
+  event?: string;
+  award?: string;
   tagline: string;
   description: string;
   bullets: string[];
@@ -47,9 +50,10 @@ export const projects: Project[] = [
   {
     slug: "asyncpair",
     title: "AsyncPair",
-    subtitle: "IBM Bob Hackathon · 2026 · Judging in progress",
     category: "Hackathon",
     year: "2026",
+    event: "IBM Bob Hackathon",
+    award: "Submitted",
     tagline:
       "Async pair programming across time zones — capture context at every git commit, hand it off, and let an AI stand in for your teammate while they sleep.",
     description:
@@ -81,9 +85,11 @@ export const projects: Project[] = [
   {
     slug: "flanner",
     title: "Flanner",
-    subtitle: "HackPrinceton Spring 2026 · Knot API track, 1st Place ($500)",
+    subtitle: "Knot API track",
     category: "Hackathon",
     year: "2026",
+    event: "HackPrinceton Spring 2026",
+    award: "1st Place ($500)",
     tagline:
       "Turns six months of DoorDash / Uber Eats orders into a weekly home-cooked meal plan, then auto-fills your Amazon Fresh cart.",
     description:
@@ -115,9 +121,10 @@ export const projects: Project[] = [
   {
     slug: "motzip",
     title: "MotZip",
-    subtitle: "Next-Gen Hacks Beta · Spring 2026 · Judging in progress",
     category: "Hackathon",
     year: "2026",
+    event: "Next-Gen Hacks Beta · Spring 2026",
+    award: "Submitted",
     tagline:
       "Restaurants by voice. Speak what you want, watch a 3D map filter to candidates, then have an AI agent call every restaurant in parallel.",
     description:
@@ -150,9 +157,10 @@ export const projects: Project[] = [
   {
     slug: "bci-visualization",
     title: "BCI Neural Visualization System",
-    subtitle: "Precision Neuroscience BCI Hackathon, 1st Place ($1,000)",
     category: "Hackathon",
     year: "2026",
+    event: "Precision Neuroscience BCI Hackathon",
+    award: "1st Place ($1,000)",
     tagline:
       "Real-time guidance for surgeons placing 1024-channel ECoG arrays.",
     description:
@@ -183,9 +191,10 @@ export const projects: Project[] = [
   {
     slug: "trippo",
     title: "Trippo",
-    subtitle: "Remy Hackathon 2026 · 2nd Place ($1,000)",
     category: "Hackathon",
     year: "2026",
+    event: "Remy Hackathon 2026",
+    award: "2nd Place ($1,000)",
     tagline:
       "Group travel chat that becomes a film when the trip ends — chat is the planner, photos cluster by EXIF + GPS, one-tap recap reel.",
     description:
@@ -218,9 +227,9 @@ export const projects: Project[] = [
   {
     slug: "zerve-odsc-datathon",
     title: "Zerve × ODSC AI Datathon",
-    subtitle: "ODSC AI Datathon · 2026",
     category: "Datathon",
     year: "2026",
+    event: "Zerve × ODSC AI Datathon",
     tagline:
       "Production-style MLOps pipeline for subscription upgrade prediction — 32 blocks, 5-model ensemble, weekly drift detection, all built inside the Zerve canvas.",
     description:
@@ -252,9 +261,10 @@ export const projects: Project[] = [
   {
     slug: "booky",
     title: "Booky",
-    subtitle: "YHack 2026",
     category: "Hackathon",
     year: "2026",
+    event: "YHack 2026",
+    award: "Finalist",
     tagline:
       "Social reading platform with story-branching choices and an AI-generated solar system.",
     description:

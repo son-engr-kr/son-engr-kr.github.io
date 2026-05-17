@@ -45,7 +45,9 @@ function projectRow(p: Project): string {
   const live = p.links.find((l) => /^Live/i.test(l.label))?.href;
   const titleCell = gh ? `[**${p.title}**](${gh})` : `**${p.title}**`;
   const liveSuffix = live ? ` ([Live](${live}))` : "";
-  return `| ${titleCell} | ${p.tagline}${liveSuffix} |`;
+  let competition = "—";
+  if (p.event) competition = p.award ? `${p.event} — ${p.award}` : p.event;
+  return `| ${titleCell} | ${competition} | ${p.tagline}${liveSuffix} |`;
 }
 
 const sections: Record<string, () => string> = {
@@ -54,8 +56,8 @@ const sections: Record<string, () => string> = {
   AWARDS: () => awards.map((a) => `- ${a.readme}`).join("\n"),
   PROJECTS: () =>
     [
-      "| Project | Description |",
-      "|---------|-------------|",
+      "| Project | Competition | Description |",
+      "|---------|-------------|-------------|",
       ...projects.map(projectRow),
     ].join("\n"),
   INDUSTRY: () =>

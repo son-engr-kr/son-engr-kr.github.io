@@ -11,7 +11,7 @@ export function Footer() {
               <a href="mailto:son.hyo@northeastern.edu">son.hyo@northeastern.edu</a>
             </li>
             <li>
-              <a href="mailto:son.engr.kr@gmail.com">son.engr.kr@gmail.com</a>
+              <a href="mailto:me@hyoungseo.com">me@hyoungseo.com</a>
             </li>
           </ul>
         </section>

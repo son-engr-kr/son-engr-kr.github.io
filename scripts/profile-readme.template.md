@@ -71,7 +71,7 @@
 
 ## Contact
 
-- **Email**: [son.hyo@northeastern.edu](mailto:son.hyo@northeastern.edu) · [son.engr.kr@gmail.com](mailto:son.engr.kr@gmail.com)
+- **Email**: [son.hyo@northeastern.edu](mailto:son.hyo@northeastern.edu) · [me@hyoungseo.com](mailto:me@hyoungseo.com)
 - **GitHub**: [@son-engr-kr](https://github.com/son-engr-kr)
 - **Portfolio**: [hyoungseo.com](https://hyoungseo.com)
 

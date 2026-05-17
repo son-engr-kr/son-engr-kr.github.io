@@ -45,6 +45,40 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "asyncpair",
+    title: "AsyncPair",
+    subtitle: "IBM Bob Hackathon · 2026 · Judging in progress",
+    category: "Hackathon",
+    year: "2026",
+    tagline:
+      "Async pair programming across time zones — capture context at every git commit, hand it off, and let an AI stand in for your teammate while they sleep.",
+    description:
+      "Asynchronous pair programming for teammates split across time zones. A post-commit git hook captures development context — commits, diffs, and developer notes — at the moment of every commit. The web app turns each handoff into AI-generated scenarios that predict what your teammate will hit next, plus a contextual AI chat scoped to the full git history. Author a scenario, hand it off, and review AI-generated code changes in a side-by-side diff. The entire project was built inside IBM Bob, IBM's AI-native IDE — the premise of the hackathon.",
+    bullets: [
+      "Built end-to-end in IBM Bob, IBM's AI-native IDE — the hackathon's core theme",
+      "Next.js 14 (App Router) + TypeScript web app; CLI tool built with Commander, installed via npm",
+      "`asyncpair init` installs a post-commit git hook that runs `asyncpair capture`, extracting commits, diffs and notes through simple-git",
+      "Gemini generates handoff scenarios and powers a contextual AI chat scoped to the full git history",
+      "Author → Handoff → Pairing workflow; review and approve AI-generated code changes in a side-by-side diff view",
+    ],
+    tags: [
+      "IBM Bob IDE",
+      "Next.js 14",
+      "React 18",
+      "TypeScript",
+      "Tailwind CSS",
+      "Commander",
+      "simple-git",
+      "Gemini",
+      "Jest",
+    ],
+    links: [
+      { label: "Live", href: "https://ibm-bob-hackathon-two.vercel.app" },
+      { label: "GitHub", href: "https://github.com/anmemol-beta/ibm-bob-hackathon" },
+    ],
+    videoEmbedUrl: "https://www.youtube.com/embed/qypKveZOOus",
+  },
+  {
     slug: "flanner",
     title: "Flanner",
     subtitle: "HackPrinceton Spring 2026 · Knot API track, 1st Place ($500)",

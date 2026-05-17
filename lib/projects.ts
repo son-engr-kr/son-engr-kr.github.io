@@ -292,5 +292,41 @@ export const projects: Project[] = [
     ],
     videoEmbedUrl: "https://www.youtube.com/embed/vb6r4Af8pb0",
   },
+  {
+    slug: "segrec",
+    title: "SegRec",
+    subtitle: "Segment-Level Video Recommendation Engine",
+    category: "Hackathon",
+    year: "2026",
+    event: "Video Understanding AI Hackathon",
+    tagline:
+      "YouTube recommends whole videos; SegRec recommends specific segments — click a chapter in one video and discover similar moments across your entire library.",
+    description:
+      "A segment-level video recommendation engine. Paste a YouTube URL and SegRec downloads it with yt-dlp and indexes it through the Twelve Labs API, auto-generates a clickable chapter timeline, and — when you click a chapter — finds and ranks similar moments across every indexed video, jumping playback straight to them. Built for the Video Understanding AI Hackathon at Northeastern around Twelve Labs' video foundation models.",
+    bullets: [
+      "FastAPI + Python 3.11 backend; Vite + React + TypeScript + Tailwind CSS frontend with react-player playback",
+      "Twelve Labs API for video understanding — Marengo embeddings for segment similarity, Pegasus for chapter generation",
+      "Paste a YouTube URL → yt-dlp downloads it → auto-generated, clickable chapter timeline",
+      "Click a chapter to surface ranked similar segments across the whole library; ships an optional FiftyOne plugin with a FindSimilarSegments operator",
+    ],
+    tags: [
+      "Python",
+      "FastAPI",
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "Twelve Labs API",
+      "FiftyOne",
+      "yt-dlp",
+    ],
+    links: [
+      {
+        label: "GitHub",
+        href: "https://github.com/son-engr-kr/beta-twelvelabs-hackathon",
+        primary: true,
+      },
+    ],
+  },
 ];
 
